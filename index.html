@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Files Access</title>
+  <title>Secure File Access</title>
   <style>
     body {
       background: linear-gradient(135deg, #1e1e2f, #2c2c54);
@@ -23,13 +23,24 @@
       margin-bottom: 20px;
     }
 
+    input[type="password"] {
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      outline: none;
+      text-align: center;
+      width: 220px;
+      margin-bottom: 20px;
+    }
+
     .button {
       background: #4a90e2;
       color: white;
-      padding: 15px 40px;
+      padding: 12px 35px;
       border: none;
-      border-radius: 12px;
-      font-size: 1.2rem;
+      border-radius: 10px;
+      font-size: 1.1rem;
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -47,13 +58,35 @@
       font-size: 0.9rem;
       opacity: 0.7;
     }
+
+    .error {
+      color: #ff6b6b;
+      margin-top: 10px;
+      font-size: 0.95rem;
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <h1>Please click below to access your files</h1>
-  <a href="https://www.playbook.com/s/files34/files/" target="_blank">
-    <button class="button">Click Here!</button>
-  </a>
-  <footer>Powered by yourdomain.com</footer>
+  <h1>🔒 Secure Access Required</h1>
+  <p>Please enter the access password to view the files.</p>
+  <input type="password" id="passwordInput" placeholder="Enter Password">
+  <button class="button" onclick="checkPassword()">Unlock</button>
+  <p id="errorMsg" class="error">Incorrect password. Try again.</p>
+  <footer>Protected Access • yourdomain.com</footer>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById('passwordInput').value;
+      const errorMsg = document.getElementById('errorMsg');
+      const correctPassword = 'access123'; // Change this to your real password
+
+      if (password === correctPassword) {
+        window.location.href = 'https://www.playbook.com/s/files34/files/';
+      } else {
+        errorMsg.style.display = 'block';
+      }
+    }
+  </script>
 </body>
 </html>
